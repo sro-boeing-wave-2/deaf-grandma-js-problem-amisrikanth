@@ -17,17 +17,13 @@ const { prompt, print } = require('./prompt-print');
 let count = 0;
 print('What do you want to say to Grandma!!');
 do {
-  const input1 = prompt();
-  if (isUppercase(input1)) {
-    if (input1 === 'BYE') {
-      count += 1;
-      if (count === 3) {
-        break;
-      }
-    }
-    const str = 'NO, NOT SINCE 19';
-    print(str + getRandomValue(30, 50));
-  } else {
+  const input = prompt();
+  if (input === 'BYE') {
+    count += 1;
+  }
+  if (isUppercase(input) && count < 3) {
+    print(`NO, NOT SINCE 19${getRandomValue(30, 50)}`);
+  } else if (count < 3) {
     print('HUH?! SPEAK UP, SONNY!');
   }
 } while (count < 3);
